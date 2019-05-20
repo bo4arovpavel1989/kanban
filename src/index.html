@@ -7,42 +7,71 @@
 </head>
 <body>
   <div class="container">
-    <div class='column'>
-      <h3>План на месяц</h3>
-      <div class="entries">
-        <div class="entry">
-          План план
-        </div>
-        <div class="entry">
-          План план
-        </div>
-        <div class="entry">
-          План план
-        </div>
-        <div class="entry">
-          План план
-        </div>
-      </div>
-      <div class="entryForm form">
-        <span class="plusButton"></span><span>Добавить еще одну карточку</span>
-      </div>
-    </div>
-    <div class="column">
-      <h3>План на день</h3>
-      <div class="entries">
-        <div class="entry">
-          План план
-        </div>
-        <div class="entry">
-          План план
+    <div>
+      <div class='column'>
+        <h3>План на месяц</h3>
+        <div class="entries">
+          <div class="entry">
+            План план
+          </div>
+          <div class="entry">
+            План план
+          </div>
+          <div class="entry">
+            План план
+          </div>
+          <div class="entry">
+            План план
+          </div>
         </div>
       </div>
       <div class="entryForm form">
-        <span class="plusButton"></span><span>Добавить еще одну карточку</span>
+        <form class="hidden">
+          <div>
+            <textarea placeholder="Введите название карточки"></textarea>
+          </div>
+          <div class="controls">
+            <input type="submit" value="Добавить карточку"/>
+            <span class="closeButton"></span>
+          </div>
+        </form>
+        <div class="addButtons">
+          <span class="plusButton"></span>
+          <span>Добавить еще одну карточку</span>
+        </div>
       </div>
     </div>
-    <div class="column columnForm form">
-      <span class="plusButton"></span><span>Добавить еще одну колонку</span>
+    <div>
+      <div class="column">
+        <h3>План на день</h3>
+        <div class="entries">
+          <div class="entry">
+            План план
+          </div>
+          <div class="entry">
+            План план
+          </div>
+        </div>
+      </div>
+      <div class="entryForm form">
+        <form class="hidden">
+          <div>
+            <textarea placeholder="Введите название карточки"></textarea>
+          </div>
+          <div class="controls">
+            <input type="submit" value="Добавить карточку"/>
+            <span class="closeButton"></span>
+          </div>
+        </form>
+        <div class="addButtons">
+          <span class="plusButton"></span>
+          <span>Добавить еще одну карточку</span>
+        </div>
+      </div>
+    </div>
+    <div class="columnForm form standalone">
+      <span class="plusButton"></span>
+      <span>Добавить еще одну колонку</span>
     </div>
 </body>
 <script src='app/bundle.js'></script>

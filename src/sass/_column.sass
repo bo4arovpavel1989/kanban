@@ -1,10 +1,11 @@
 .column
   width: 272px
   background-color: #DFE3E6
-  border-radius: 3px
-  margin: 12px
+  border-radius: 3px 3px 0 0
+  margin-right: 12px
   height: auto
-  padding: 8px 12px 8px 12px
+  padding: 8px 12px 0 12px
+  box-sizing: border-box
 
 h3
   font-style: normal
@@ -17,22 +18,46 @@ h3
   background: #FFFFFF
   box-shadow: 0px 1px 4px rgba(9, 45, 66, 0.25)
   border-radius: 3px
-  margin: 8px 0 8px 0
+  margin-top: 8px
   padding: 8px 8px 12px 12px
 
 .form
   color: #6B808C
-  max-height: 19px
-  margin-top: 12px
-  margin-bottom: 4px
+  width: 272px
+  min-height: 43px
+  border-radius: 0 0 3px 3px
+  margin-right: 12px
+  padding: 12px
+  background-color: #DFE3E6
+  cursor: pointer
+  box-sizing: border-box
+
+.addButtons
   display: flex
   flex-direction: row
   align-items: center
-  cursor: pointer
 
-.plusButton
-  background-image: url(../img/vector.png)
+.controls
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+
+.form textarea
+  width: 100%
+  box-sizing: border-box
+
+.form.standalone
+  border-radius: 3px
+
+.plusButton, .closeButton
   width: 15px
   height: 15px
   display: inline-block
+
+.plusButton
+  background-image: url(../img/vector.png)
   margin-right: 8px
+
+.closeButton
+  background-image: url(../img/cross.png)
