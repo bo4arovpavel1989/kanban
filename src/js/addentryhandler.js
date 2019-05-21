@@ -1,9 +1,14 @@
+/* Class dscribing behavior of addEntry forms */
 class AddEntryHandler {
   constructor (selector) {
     this.selector = selector;
     this.addListeners();
   }
 
+  /**
+    * Method add listeners to all control elements of addEntry forms in document
+    *@return {void}
+    */
   addListeners () {
     let forms = document.getElementsByClassName(this.selector);
 
@@ -16,12 +21,22 @@ class AddEntryHandler {
     }
   }
 
+  /**
+    * Method handles click on addEntry form open/close buttons
+    * @param {Object} form - current form to handle
+    * @return {Void}
+    */
   handleClick (form) {
     form.querySelector('.addButtons').classList.toggle('hidden')
     form.querySelector('form').classList.toggle('hidden')
     form.querySelector('form').reset()
   }
 
+  /**
+    * Method handles addEntry from submit
+    * @param {Object} form - to be handled
+    * @return {void}
+    */
   handleSubmit (form, e) {
     e.preventDefault()
 
@@ -31,6 +46,10 @@ class AddEntryHandler {
     form.querySelector('form').reset()
   }
 
+  /**
+    * Method creates new entry HTML element
+    * @returns {void}
+    */
   addNewEntry (form, name) {
     let entry = document.createElement('div');
 

@@ -1,4 +1,5 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+/* Class defining addColumn form handler */
 class AddColumnHandler {
   constructor (selector, entryHandler) {
     this.selector = selector
@@ -6,12 +7,21 @@ class AddColumnHandler {
     this.addListeners()
   }
 
+  /**
+    * Method adds listener for calling control buttons of addColum form
+    * @returns {void}
+    */
   addListeners () {
     let form = document.getElementById(this.selector);
 
     form.onclick = this.handleClick.bind(this)
   }
 
+  /**
+    * Method handles click on control button of addColumn form
+    * It creates form by cloning instance if hidden form and inserts it in document
+    * @return {void}
+    */
   handleClick () {
     let formToClone = document.getElementById('columnForm');
     let insertBefore = document.getElementById('addColumnButton');
@@ -24,15 +34,28 @@ class AddColumnHandler {
     this.addhandlers(newForm)
   }
 
+  /**
+    * Method adds handlers for newly created addColumn form
+    * @returns {void}
+    */
   addhandlers (form) {
     form.querySelector('.closeButton').onclick = this.removeForm.bind(this, form)
     form.querySelector('form').onsubmit = this.createColumn.bind(this, form)
   }
 
+  /**
+    * Method removesnewly created column
+    * @return {void}
+    */
   removeForm (form) {
     form.remove()
   }
 
+  /**
+    * Method creates new column by cloning its hidden instance and inserting in document
+    * in the end addColumn form is removed
+    * @return {void}
+    */
   createColumn (form) {
     let name = form.querySelector('textarea').value;
     let elToClone = document.getElementById('columnInstance');
@@ -52,12 +75,17 @@ class AddColumnHandler {
 module.exports = AddColumnHandler
 
 },{}],2:[function(require,module,exports){
+/* Class dscribing behavior of addEntry forms */
 class AddEntryHandler {
   constructor (selector) {
     this.selector = selector;
     this.addListeners();
   }
 
+  /**
+    * Method add listeners to all control elements of addEntry forms in document
+    *@return {void}
+    */
   addListeners () {
     let forms = document.getElementsByClassName(this.selector);
 
@@ -70,12 +98,22 @@ class AddEntryHandler {
     }
   }
 
+  /**
+    * Method handles click on addEntry form open/close buttons
+    * @param {Object} form - current form to handle
+    * @return {Void}
+    */
   handleClick (form) {
     form.querySelector('.addButtons').classList.toggle('hidden')
     form.querySelector('form').classList.toggle('hidden')
     form.querySelector('form').reset()
   }
 
+  /**
+    * Method handles addEntry from submit
+    * @param {Object} form - to be handled
+    * @return {void}
+    */
   handleSubmit (form, e) {
     e.preventDefault()
 
@@ -85,6 +123,10 @@ class AddEntryHandler {
     form.querySelector('form').reset()
   }
 
+  /**
+    * Method creates new entry HTML element
+    * @returns {void}
+    */
   addNewEntry (form, name) {
     let entry = document.createElement('div');
 
