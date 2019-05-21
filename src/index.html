@@ -6,12 +6,12 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="container">
     <div>
       <div class='column'>
         <h3>План на месяц</h3>
         <div class="entries">
-          <div class="entry">
+          <div class="entry" draggable="true">
             План план
           </div>
           <div class="entry">
@@ -28,7 +28,7 @@
       <div class="entryForm form">
         <form class="hidden">
           <div>
-            <textarea placeholder="Введите название карточки"></textarea>
+            <textarea placeholder="Введите название карточки" required></textarea>
           </div>
           <div class="controls">
             <input type="submit" value="Добавить карточку"/>
@@ -56,7 +56,7 @@
       <div class="entryForm form">
         <form class="hidden">
           <div>
-            <textarea placeholder="Введите название карточки"></textarea>
+            <textarea placeholder="Введите название карточки" required></textarea>
           </div>
           <div class="controls">
             <input type="submit" value="Добавить карточку"/>
@@ -69,9 +69,44 @@
         </div>
       </div>
     </div>
-    <div class="columnForm form standalone">
+    <div class="columnForm form standalone" id="addColumnButton">
       <span class="plusButton"></span>
       <span>Добавить еще одну колонку</span>
+    </div>
+    <div class="hidden" id="columnForm">
+      <div class="columnForm form standalone">
+        <form>
+          <div class='textarea'>
+            <textarea placeholder="Введите название колонки" required></textarea>
+          </div>
+          <div class="controls">
+            <input type="submit" value="Добавить колонку"/>
+            <span class="closeButton"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="hidden" id="columnInstance">
+      <div class='column'>
+        <h3></h3>
+        <div class="entries">
+        </div>
+      </div>
+      <div class="entryForm form">
+        <form class="hidden">
+          <div>
+            <textarea placeholder="Введите название карточки" required></textarea>
+          </div>
+          <div class="controls">
+            <input type="submit" value="Добавить карточку"/>
+            <span class="closeButton"></span>
+          </div>
+        </form>
+        <div class="addButtons">
+          <span class="plusButton"></span>
+          <span>Добавить еще одну карточку</span>
+        </div>
+      </div>
     </div>
 </body>
 <script src='app/bundle.js'></script>

@@ -14,8 +14,10 @@ h3 {
   font-style: normal;
   font-weight: bold;
   line-height: 19px;
-  font-size: 13px;
-  margin-bottom: 4px; }
+  font-size: 13px; }
+
+.entries {
+  padding-top: 4px; }
 
 .entry {
   background: #FFFFFF;
@@ -90,6 +92,11 @@ h3 {
   color: #B8B9BB;
   margin-bottom: 8px; }
 
+.form.columnForm textarea {
+  height: 35px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
 .form.standalone {
   -webkit-border-radius: 3px;
           border-radius: 3px; }
@@ -102,7 +109,12 @@ h3 {
   height: 30px;
   color: #FFFFFF;
   font-weight: bold;
-  border: none; }
+  border: none;
+  font-size: 13px; }
+
+.form.columnForm input[type=submit] {
+  width: 147px;
+  font-size: 13px; }
 
 .plusButton, .closeButton {
   width: 15px;
@@ -115,6 +127,21 @@ h3 {
 
 .closeButton {
   background-image: url(../img/cross.png); }
+
+#addColumnButton {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
 
 * {
   margin: 0; }
