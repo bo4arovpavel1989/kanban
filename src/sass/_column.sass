@@ -1,5 +1,5 @@
 .columnContainer
-  max-height: 100vh
+  max-height: 10vh
 .column
   width: 272px
   background-color: #DFE3E6
@@ -9,8 +9,12 @@
   padding: 8px 12px 0 12px
   box-sizing: border-box
   overflow-y: hidden
-  max-height: 78vh
-
+  @include large
+    max-height: 82vh
+  @include medium
+    max-height: 78vh
+  @include small
+    max-height: 70vh
 h3
   font-style: normal
   font-weight: bold

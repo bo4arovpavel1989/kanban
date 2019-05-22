@@ -1,0 +1,15 @@
+$small: 400px
+$medium: 600px
+$large: 812px
+
+@mixin small
+  @media (max-height: #{$medium - 1px})
+    @content
+
+@mixin medium
+  @media (min-height: #{$medium}) and (max-height: #{$large - 1px})
+    @content
+
+@mixin large
+  @media (min-height: #{$large})
+    @content
