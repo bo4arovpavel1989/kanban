@@ -60,7 +60,7 @@ class AddEntryHandler {
     entry.className = 'entry'
     entry.setAttribute('draggable', true)
     entry.ondragstart = this.dragManager.dragStart
-    form.previousElementSibling.appendChild(entry)
+    form.previousElementSibling.querySelector('.entries').appendChild(entry)
   }
 }
 
