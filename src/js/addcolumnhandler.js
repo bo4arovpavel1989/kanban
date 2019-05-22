@@ -64,6 +64,11 @@ class AddColumnHandler {
     newColumn.classList.remove('hidden')
     newColumn.removeAttribute('id')
     newColumn.querySelector('h3').innerHTML = name
+
+    newColumn.ondrop = this.entryHandler.dragManager.dragDrop
+    newColumn.ondragenter = this.entryHandler.dragManager.dragEnter
+    newColumn.ondragover = this.entryHandler.dragManager.dragOver
+
     document.getElementById('container').insertBefore(newColumn, insertBefore)
 
     form.remove()

@@ -1,4 +1,6 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const DragManager = require('./dragmanager')
+
 /* Class defining addColumn form handler */
 class AddColumnHandler {
   constructor (selector, entryHandler) {
@@ -65,6 +67,11 @@ class AddColumnHandler {
     newColumn.classList.remove('hidden')
     newColumn.removeAttribute('id')
     newColumn.querySelector('h3').innerHTML = name
+
+    newColumn.ondrop = this.entryHandler.dragManager.dragDrop
+    newColumn.ondragenter = this.entryHandler.dragManager.dragEnter
+    newColumn.ondragover = this.entryHandler.dragManager.dragOver
+
     document.getElementById('container').insertBefore(newColumn, insertBefore)
 
     form.remove()
@@ -74,12 +81,15 @@ class AddColumnHandler {
 
 module.exports = AddColumnHandler
 
-},{}],2:[function(require,module,exports){
+},{"./dragmanager":3}],2:[function(require,module,exports){
+const DragManager = require('./dragmanager')
+
 /* Class dscribing behavior of addEntry forms */
 class AddEntryHandler {
   constructor (selector) {
     this.selector = selector;
     this.addListeners();
+    this.dragManager = new DragManager()
   }
 
   /**
@@ -132,13 +142,52 @@ class AddEntryHandler {
 
     entry.innerHTML = name
     entry.className = 'entry'
+    entry.setAttribute('draggable', true)
+    entry.ondragstart = this.dragManager.dragStart
     form.previousElementSibling.appendChild(entry)
   }
 }
 
 module.exports = AddEntryHandler
 
-},{}],3:[function(require,module,exports){
+},{"./dragmanager":3}],3:[function(require,module,exports){
+class DragManager {
+  dragStart (e) {
+    e.target.setAttribute('id', 'isMoved')
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('Text', e.target.getAttribute('id'))
+
+    return true;
+  }
+
+  dragEnter (e) {
+    e.preventDefault()
+
+    return true;
+  }
+
+  dragOver (e) {
+    e.preventDefault()
+  }
+
+  dragDrop (e) {
+    let data = e.dataTransfer.getData('Text');
+
+    e.target.closest('.columnContainer')
+            .querySelector('.entries')
+            .prepend(document.getElementById(data))
+
+    e.stopPropagation()
+
+    document.getElementById(data).removeAttribute('id')
+
+    return false;
+  }
+}
+
+module.exports = DragManager
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 const AddEntryHandler = require('./addentryhandler');
@@ -147,4 +196,4 @@ const AddColumnHandler = require('./addcolumnhandler');
 const entryHandler = new AddEntryHandler('entryForm')
 const columnHandler = new AddColumnHandler('addColumnButton', entryHandler)
 
-},{"./addcolumnhandler":1,"./addentryhandler":2}]},{},[3]);
+},{"./addcolumnhandler":1,"./addentryhandler":2}]},{},[4]);

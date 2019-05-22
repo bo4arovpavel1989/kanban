@@ -1,8 +1,11 @@
+const DragManager = require('./dragmanager')
+
 /* Class dscribing behavior of addEntry forms */
 class AddEntryHandler {
   constructor (selector) {
     this.selector = selector;
     this.addListeners();
+    this.dragManager = new DragManager()
   }
 
   /**
@@ -55,6 +58,8 @@ class AddEntryHandler {
 
     entry.innerHTML = name
     entry.className = 'entry'
+    entry.setAttribute('draggable', true)
+    entry.ondragstart = this.dragManager.dragStart
     form.previousElementSibling.appendChild(entry)
   }
 }
