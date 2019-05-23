@@ -70,10 +70,7 @@ gulp.task('build', ['clean', 'img', 'sass'], function() {
   .pipe(cssnano())
   .pipe(gulp.dest('dist/css'))
 
-  const buildFonts = gulp.src('src/fonts/**/*')
-  .pipe(gulp.dest('dist/fonts'))
-
-  const buildJs = gulp.src('src/app/**/*')
+  const buildJs = gulp.src('src/app/bundle.js')
   .pipe(babel())
   .pipe(uglify())
   .pipe(gulp.dest('dist/app'))
